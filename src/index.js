@@ -1,9 +1,9 @@
 const path = require('path');
 const express = require('express');
-const expHbs = require('express-handlebars');
-const morgan = require('morgan');
-const app = express();
-const port = 3000;
+                const expHbs = require('express-handlebars');
+            const morgan = require('morgan');
+            const app = express();
+const       port = 3000;
 const route = require('./routes');
 
 //sử dụng file tĩnh
