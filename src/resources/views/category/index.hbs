@@ -1,1 +1,49 @@
-<h1>Trang danh muc</h1>
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-2">
+            <a class="btn btn-sm btn-primary float-right" href="/category/create">Thêm danh mục</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        {{#if success}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{success}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        <script>
+            const url = new URL(window.location.href);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, document.title, url);
+        </script>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+               <tr>
+                   <th>STT</th>
+                   <th>Tên danh mục</th>
+                   <th>Mô tả</th>
+                   <th>Ngày tạo</th>
+                   <th>Ngày cập nhật</th>
+                   <th>Hành động</th>
+               </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
+                    <tr>
+                        <td>{{ @index }}</td>
+                        <td>{{ this.name }}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.createdAt}}</td>
+                        <td>{{this.updatedAt}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="">Sửa</a>
+                            <a class="btn btn-sm btn-danger" href="/category/{{this._id}}/delete">Xóa</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
